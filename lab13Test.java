@@ -103,4 +103,25 @@ public class lab13Test
     public void testResult3() {
         assertArrayEquals(expectedResult3, lab.getResult3());
     }
+
+    @Test
+    public void testTotalCount() {
+	assertEquals(1000, lab.getTotalCount());
+    }
+
+    @Test
+    public void testOddCount() {
+	assertEquals(507, lab.getOddCount());
+    }
+
+    @Test
+    public void testEvenCount() {
+	assertEquals(493, lab.getEvenCount());
+    }
+
+    @Test
+    public void testDistinctGreaterThanFiveCount() {
+	assertEquals(94, lab.getDistinctGreaterThanFiveCount());
+    }
+
 }
