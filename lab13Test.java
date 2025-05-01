@@ -1,5 +1,7 @@
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+// Elizabeth Link - CS210 Lab13 - JUnit Test
+
+//import static org.junit.Assert.assertArrayEquals; // only running JUnit5
+//import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -13,8 +15,8 @@ public class lab13Test
 	Integer[] expectedResult1;
 	Integer[] expectedResult2;
 	Integer[] expectedResult3;
-	String inputFilename = "lab13_input_data.txt";
-	String expectedResultsFilename = "lab13_expected_results.txt";
+	String inputFilename = "input_data.txt";
+	String expectedResultsFilename = "expected_results.txt";
 
 	@BeforeEach
 	public void setUp() throws Exception 
@@ -28,6 +30,7 @@ public class lab13Test
 		// testData.get(0) has the expected results for getResult1()
 		// testData.get(1) has the expected results for getResult2()
 		// testData.get(2) has the expected results for getResult3()
+				
 		ArrayList<ArrayList<Integer>> testData = new ArrayList<>();
 		for( int i = 0; i < 3; i++ )
 		{
@@ -38,6 +41,7 @@ public class lab13Test
 		{
 			System.out.println("reading " + expectedResultsFilename);
 			java.io.BufferedReader input = new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(expectedResultsFilename)));
+
 			for( int i = 0; i < testData.size(); i++ )
 			{
 				ArrayList<Integer> currentTestData = testData.get(i); 
@@ -61,18 +65,21 @@ public class lab13Test
 			
 			// put code here to populate expectedResult1 with the values in testData.get(0)
 			// so that you can use "assertArrayEquals" to verify expectedResult1 and lab.getResult1() are the same
-			expectedResult1 = new Integer[testData.get(0).size()];
-			
+			//expectedResult1 = new Integer[testData.get(0).size()];
 			
 			// put code here to populate expectedResult2 with the values in testData.get(1)
 			// so that you can use "assertArrayEquals" to verify expectedResult2 and lab.getResult2() are the same
-			expectedResult2 = new Integer[testData.get(1).size()];
-			
-			
+			//expectedResult2 = new Integer[testData.get(1).size()];
+						
 			// put code here to populate expectedResult3 with the values in testData.get(2)
 			// so that you can use "assertArrayEquals" to verify expectedResult3 and lab.getResult3() are the same
-			expectedResult3 = new Integer[testData.get(2).size()];
-			
+			//expectedResult3 = new Integer[testData.get(2).size()];
+
+			// populate expected result arrays
+			expectedResult1 = testData.get(0).toArray(new Integer[0]);
+			expectedResult2 = testData.get(1).toArray(new Integer[0]);
+			expectedResult3 = testData.get(2).toArray(new Integer[0]);
+
 		}
 		catch(Exception e)
 		{
@@ -80,4 +87,20 @@ public class lab13Test
 			System.exit(0);
 		}		
 	}
+
+    // test methods
+    @Test
+    public void testResult1() {
+        assertArrayEquals(expectedResult1, lab.getResult1());
+    }
+
+    @Test
+    public void testResult2() {
+        assertArrayEquals(expectedResult2, lab.getResult2());
+    }
+
+    @Test
+    public void testResult3() {
+        assertArrayEquals(expectedResult3, lab.getResult3());
+    }
 }
